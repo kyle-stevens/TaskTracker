@@ -1,7 +1,17 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class Main {
+import javafx.application.*;
+import javafx.scene.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import javafx.stage.*;
+import javafx.scene.control.ScrollPane;
+
+
+public class Main extends Application{
 
     public static void main(String[] args){
 
@@ -20,7 +30,51 @@ public class Main {
 
         }while(choice != 'q');
         scan.close();
+
+
+
+        Application.launch(args);
         return;
+    }
+
+    @Override
+    public void start(Stage stage){
+        // Create the Text
+        //Text text = new Text("Hello JavaFX");
+        // Create the HBox
+        HBox root = new HBox();
+        Pane pane1 = new Pane();
+        pane1.setMinWidth(200);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setMaxWidth(200);
+
+        Text text = new Text("Lorem Ipsum and other such weird stuff to try and figure out how to create a scroll pane object. Will eventually become a scroll list of selectable objects and tasks to further inspect." +
+                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        text.setWrappingWidth(180);
+        scrollPane.setContent(text);
+
+        // Add the Text to the VBox
+        root.getChildren().add(pane1);
+        root.getChildren().add(scrollPane);
+        // Set the Size of the VBox
+        root.setMinSize(350, 250);
+
+        // Create the Scene
+        Scene scene = new Scene(root);
+
+        // Set the Properties of the Stage
+        stage.setX(100);
+        stage.setY(200);
+        stage.setMinHeight(300);
+        stage.setMinWidth(400);
+
+        // Add the scene to the Stage
+        stage.setScene(scene);
+        // Set the title of the Stage
+        stage.setTitle("Your first JavaFX Example");
+        // Display the Stage
+        stage.show();
     }
 
     public static void Option(char choice, TaskList list, Scanner scan){
