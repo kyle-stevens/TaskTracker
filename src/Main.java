@@ -1,22 +1,15 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.Scanner;
-
-import javafx.application.*;
-import javafx.scene.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
-import javafx.stage.*;
-import javafx.scene.control.ScrollPane;
+import javax.swing.*;
+import javax.swing.event.ListSelectionListener;
 
 
 //Create a Class for FileIO
 
-public class Main extends Application{
+public class Main {
 
     static int[] APP_SIZE = { 600 , 400};
 
@@ -73,52 +66,24 @@ public class Main extends Application{
             i.printStackTrace();
 
         }
+        RunGUI(testList);
 
-
-        Application.launch(args);
+        //Application.launch(args);
         return;
     }
 
+    static void RunGUI(TaskList testList){
+        
+    }
+
+    /*
     @Override
     public void start(Stage stage){
-        //Currently Using a Static Size with No Dynamic Resizing
-        //Basic Layout Architecture:
-        //--Stage stage
-        //----HBox panels
-        //------Vbox
-        //--------HBox
-        //----------Collections Select Option/Dropdown
-        //----------AddButton - Later Implementation for collection
-        //----------Delete Button - Later Implementation for collection
-        //--------Tasks
-        //------Vbox
-        //--------Description of Selected Task
-        //--------VBox
-        //----------Add Button
-        //----------Delete Button
 
-        //Using Textfield/box as prototyping blank
-        HBox mainPanels = new HBox();
-        System.out.println(stage.getHeight());
-        VBox leftPane = new VBox();
-        TextField fillerTaskDropDown = new TextField();
-            fillerTaskDropDown.setMinHeight(APP_SIZE[1] / 6);
-            fillerTaskDropDown.setMinWidth(APP_SIZE[0] / 3);
-        TextField fillerTasksList = new TextField();
-            fillerTasksList.setMinHeight(5 * APP_SIZE[1] / 6);
-            fillerTasksList.setMinWidth(APP_SIZE[0] / 3);
-
-
-        leftPane.getChildren().addAll(fillerTaskDropDown, fillerTasksList);
-
-
-        //setting up and checking some filling/information access
-        fillerTasksList.setText("Testing");
-        TaskList testListGUI = new TaskList();
         //LoadData(testListGUI);
 
         //Loading the Data
-
+        TaskList testListGUI = new TaskList();
         try {
             FileInputStream fileIn = new FileInputStream("./test.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -135,13 +100,48 @@ public class Main extends Application{
 
         }
 
+        //Currently Using a Static Size with No Dynamic Resizing
+        //Basic Layout Architecture:
+        //--Stage stage
+        //----HBox panels
+        //------Vbox
+        //--------HBox
+        //----------JFRAME -> Collections Select Option/Dropdown
+        //----------AddButton - Later Implementation for collection
+        //----------Delete Button - Later Implementation for collection
+        //--------JFRAME -> Tasks
+        //------Vbox
+        //--------Description of Selected Task
+        //--------VBox
+        //----------Add Button
+        //----------Delete Button
 
-        String TextBoxContentsForTesting = "";
-        for(int i = 0; i < testListGUI.GetTaskNumber(); i++){
-            TextBoxContentsForTesting += testListGUI.GetTaskByIndex(i).GetTask()[0].toString() + " \n";
-        }
-        fillerTasksList.setText(TextBoxContentsForTesting);
-        System.out.println(TextBoxContentsForTesting);
+
+
+        //Using Textfield/box as prototyping blank
+        HBox mainPanels = new HBox();
+        System.out.println(stage.getHeight());
+        VBox leftPane = new VBox();
+        //Becomes JComboBox under JFrame
+        ComboBox fillerTaskDropDown = new ComboBox();
+            //fillerTaskDropDown.setMinHeight(APP_SIZE[1] / 6);
+            fillerTaskDropDown.setMinWidth(APP_SIZE[0] / 3);
+            for(int i = 0; i < testListGUI.GetTaskNumber(); i++){
+                fillerTaskDropDown.getItems().add(testListGUI.GetTaskByIndex(i).GetTask()[0]);
+            }
+
+            //Still Requires Listener to handle changes in choice
+
+//Needs to Be under a Frame
+        JList fillerTasksList = new JList();
+            //fillerTasksList.setMinHeight(5 * APP_SIZE[1] / 6);
+            //fillerTasksList.setMinWidth(APP_SIZE[0] / 3);
+
+        leftPane.getChildren().add(fillerTaskDropDown);
+        //leftPane.getChildren().add(fillerTasksList);
+
+
+
 
 
         VBox rightPane = new VBox();
@@ -213,8 +213,8 @@ public class Main extends Application{
         // Set the title of the Stage
         stage.setTitle("Your first JavaFX Example");
         // Display the Stage
-        stage.show();*/
-    }
+        stage.show();
+    }*/
 
     public static void Option(char choice, TaskList list, Scanner scan){
 
