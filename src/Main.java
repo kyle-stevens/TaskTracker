@@ -1,15 +1,24 @@
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.*;
+import javafx.stage.Stage;
+import javafx.util.*;
+import javafx.collections.*;
+
 import java.io.*;
+import java.util.List;
 import java.util.Scanner;
-import javax.swing.*;
-import javax.swing.event.ListSelectionListener;
+
 
 
 //Create a Class for FileIO
 
-public class Main {
+public class Main extends Application{
 
     static int[] APP_SIZE = { 600 , 400};
 
@@ -66,22 +75,19 @@ public class Main {
             i.printStackTrace();
 
         }
-        RunGUI(testList);
+        //RunGUI(testList);
 
-        //Application.launch(args);
+        Application.launch(args);
         return;
     }
 
     static void RunGUI(TaskList testList){
-        
+        Application.launch();
     }
 
-    /*
+
     @Override
     public void start(Stage stage){
-
-        //LoadData(testListGUI);
-
         //Loading the Data
         TaskList testListGUI = new TaskList();
         try {
@@ -100,121 +106,51 @@ public class Main {
 
         }
 
-        //Currently Using a Static Size with No Dynamic Resizing
-        //Basic Layout Architecture:
-        //--Stage stage
-        //----HBox panels
-        //------Vbox
-        //--------HBox
-        //----------JFRAME -> Collections Select Option/Dropdown
-        //----------AddButton - Later Implementation for collection
-        //----------Delete Button - Later Implementation for collection
-        //--------JFRAME -> Tasks
-        //------Vbox
-        //--------Description of Selected Task
-        //--------VBox
-        //----------Add Button
-        //----------Delete Button
-
-
-
-        //Using Textfield/box as prototyping blank
-        HBox mainPanels = new HBox();
-        System.out.println(stage.getHeight());
-        VBox leftPane = new VBox();
-        //Becomes JComboBox under JFrame
-        ComboBox fillerTaskDropDown = new ComboBox();
-            //fillerTaskDropDown.setMinHeight(APP_SIZE[1] / 6);
-            fillerTaskDropDown.setMinWidth(APP_SIZE[0] / 3);
-            for(int i = 0; i < testListGUI.GetTaskNumber(); i++){
-                fillerTaskDropDown.getItems().add(testListGUI.GetTaskByIndex(i).GetTask()[0]);
-            }
-
-            //Still Requires Listener to handle changes in choice
-
-//Needs to Be under a Frame
-        JList fillerTasksList = new JList();
-            //fillerTasksList.setMinHeight(5 * APP_SIZE[1] / 6);
-            //fillerTasksList.setMinWidth(APP_SIZE[0] / 3);
-
-        leftPane.getChildren().add(fillerTaskDropDown);
-        //leftPane.getChildren().add(fillerTasksList);
-
-
-
-
-
-        VBox rightPane = new VBox();
-        TextField fillerDescriptionBox = new TextField();
-            fillerDescriptionBox.setPrefHeight(2 * APP_SIZE[1] / 3);
-            fillerDescriptionBox.setPrefWidth(2 * APP_SIZE[0] / 3);
-        Button addButton = new Button("Add");
-            addButton.setPrefSize(2 * APP_SIZE[0] / 3, APP_SIZE[1] / 6);
-        Button deleteButton = new Button("Delete");
-            deleteButton.setPrefSize(2 * APP_SIZE[0] / 3, APP_SIZE[1] / 6);
-
-        rightPane.getChildren().addAll(fillerDescriptionBox, addButton, deleteButton);
-
-        // Add the Text to the VBox
-        mainPanels.getChildren().addAll(leftPane,rightPane);
-
-        // Set the Size of the VBox
-        mainPanels.setMinSize(350, 250);
-
-        // Create the Scene
-        Scene scene = new Scene(mainPanels);
-
-        // Set the Properties of the Stage
-        stage.setX(100);
-        stage.setY(200);
-        stage.setMinHeight(APP_SIZE[1]);
-        stage.setMinWidth(APP_SIZE[0]);
-        stage.setResizable(false); //Setting to Static Size Until Further Development
-
-        // Add the scene to the Stage
-        stage.setScene(scene);
-        // Set the title of the Stage
-        stage.setTitle("Your first JavaFX Example");
-        // Display the Stage
-        stage.show();
         /*
-        // Create the Text
-        //Text text = new Text("Hello JavaFX");
-        // Create the HBox
-        HBox root = new HBox();
-        Pane pane1 = new Pane();
-        pane1.setMinWidth(200);
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setMaxWidth(200);
+        Hbox
+            Vbox
+                Dropdown List
+                Hbox
+                    Add Collection button
+                    Delete Collection button
+                List
+            Vbox
+                Textfield/Label
+                Hbox
+                    Add task button
+                    Delete task button
+         */
+        Pane root = new Pane();
+        Scene scene = new Scene(root, 400, 400);
+        HBox application = new HBox();
+            VBox leftPane = new VBox();
+                ComboBox collectionList = new ComboBox();
+                HBox collectionButtons = new HBox();
+                    Button addCollection = new Button("NEW COLLECTION");
+                    Button deleteCollection = new Button("DELETE COLLECTION");
+                collectionButtons.getChildren().addAll(addCollection, deleteCollection);
+                ListView<Task> taskList = new ListView<Task>();
+            leftPane.getChildren().addAll(collectionList, collectionButtons, taskList);
 
-        Text text = new Text("Lorem Ipsum and other such weird stuff to try and figure out how to create a scroll pane object. Will eventually become a scroll list of selectable objects and tasks to further inspect." +
-                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
-                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        text.setWrappingWidth(180);
-        scrollPane.setContent(text);
 
-        // Add the Text to the VBox
-        root.getChildren().add(pane1);
-        root.getChildren().add(scrollPane);
-        // Set the Size of the VBox
-        root.setMinSize(350, 250);
 
-        // Create the Scene
-        Scene scene = new Scene(root);
 
-        // Set the Properties of the Stage
-        stage.setX(100);
-        stage.setY(200);
-        stage.setMinHeight(300);
-        stage.setMinWidth(400);
+            VBox rightPane = new VBox();
+                Label taskDescription = new Label();
+                HBox taskButtons = new HBox();
+                    Button addTaskButton = new Button("ADD TASK");
+                    Button deleteTaskButton = new Button("DELETE TASK");
+                taskButtons.getChildren().addAll(addTaskButton, deleteTaskButton);
+            rightPane.getChildren().addAll(taskDescription, taskButtons);
+        application.getChildren().addAll(leftPane, rightPane);
+        root.getChildren().addAll(application);
 
-        // Add the scene to the Stage
+
+
+
         stage.setScene(scene);
-        // Set the title of the Stage
-        stage.setTitle("Your first JavaFX Example");
-        // Display the Stage
         stage.show();
-    }*/
+    }
 
     public static void Option(char choice, TaskList list, Scanner scan){
 
