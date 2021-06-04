@@ -1,10 +1,7 @@
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.*;
@@ -109,7 +106,7 @@ public class Main extends Application{
         /*
         Hbox
             Vbox
-                Dropdown List
+                Dropdown List (1/3, std)
                 Hbox
                     Add Collection button
                     Delete Collection button
@@ -121,25 +118,44 @@ public class Main extends Application{
                     Delete task button
          */
         Pane root = new Pane();
-        Scene scene = new Scene(root, 400, 400);
+        Scene scene = new Scene(root, APP_SIZE[0], APP_SIZE[1]);
+        root.setMaxSize(APP_SIZE[0], APP_SIZE[1]);
+        root.setMinSize(APP_SIZE[0], APP_SIZE[1]);
+        stage.setResizable(false);
+
+
         HBox application = new HBox();
             VBox leftPane = new VBox();
+            leftPane.setPrefWidth(APP_SIZE[0] /3);
+            leftPane.setTranslateX(2);
                 ComboBox collectionList = new ComboBox();
+                collectionList.setPrefWidth(APP_SIZE[0] / 3);
                 HBox collectionButtons = new HBox();
-                    Button addCollection = new Button("NEW COLLECTION");
-                    Button deleteCollection = new Button("DELETE COLLECTION");
+                    Button addCollection = new Button("ADD LIST");
+                    addCollection.setPrefWidth(APP_SIZE[0] / 6);
+                    Button deleteCollection = new Button("DELETE LIST");
+                    deleteCollection.setPrefWidth(APP_SIZE[0] / 6);
                 collectionButtons.getChildren().addAll(addCollection, deleteCollection);
                 ListView<Task> taskList = new ListView<Task>();
+                taskList.setPrefHeight(APP_SIZE[1] - collectionList.getHeight() - addCollection.getHeight() - 51);
             leftPane.getChildren().addAll(collectionList, collectionButtons, taskList);
 
-
+        //Load Tasks into List
+        for(int i = 0; i < testListGUI.GetTaskNumber(); i++){
+            taskList.getItems().add(testListGUI.GetTaskByIndex(i));
+        }
 
 
             VBox rightPane = new VBox();
-                Label taskDescription = new Label();
+            rightPane.setTranslateX(5);
+                TextField taskDescription = new TextField();
+                taskDescription.setPrefSize(2 * APP_SIZE[0] /3, 5 * APP_SIZE[1] / 6);
+                taskDescription.setEditable(false);
                 HBox taskButtons = new HBox();
                     Button addTaskButton = new Button("ADD TASK");
+                    addTaskButton.setPrefSize(APP_SIZE[0] / 3, APP_SIZE[1] / 6);
                     Button deleteTaskButton = new Button("DELETE TASK");
+                    deleteTaskButton.setPrefSize(APP_SIZE[0] / 3, APP_SIZE[1] / 6);
                 taskButtons.getChildren().addAll(addTaskButton, deleteTaskButton);
             rightPane.getChildren().addAll(taskDescription, taskButtons);
         application.getChildren().addAll(leftPane, rightPane);
