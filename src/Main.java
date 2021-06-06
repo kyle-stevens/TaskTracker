@@ -3,10 +3,13 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.*;
 import javafx.collections.*;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import java.io.*;
 import java.util.List;
 import java.util.Scanner;
@@ -22,7 +25,7 @@ public class Main extends Application{
     public static void main(String[] args){
 
         TaskList testList = new TaskList();
-        char choice = 'z';
+        char choice = 'q';
         Scanner scan = new Scanner(System.in);
         //LoadData(testList);
         //Loading the Data
@@ -136,14 +139,11 @@ public class Main extends Application{
                     Button deleteCollection = new Button("DELETE LIST");
                     deleteCollection.setPrefWidth(APP_SIZE[0] / 6);
                 collectionButtons.getChildren().addAll(addCollection, deleteCollection);
-                ListView<Task> taskList = new ListView<Task>();
+                ListView<String> taskList = new ListView<String>();
                 taskList.setPrefHeight(APP_SIZE[1] - collectionList.getHeight() - addCollection.getHeight() - 51);
             leftPane.getChildren().addAll(collectionList, collectionButtons, taskList);
 
-        //Load Tasks into List
-        for(int i = 0; i < testListGUI.GetTaskNumber(); i++){
-            taskList.getItems().add(testListGUI.GetTaskByIndex(i));
-        }
+
 
 
             VBox rightPane = new VBox();
@@ -161,8 +161,18 @@ public class Main extends Application{
         application.getChildren().addAll(leftPane, rightPane);
         root.getChildren().addAll(application);
 
+        //Load Tasks into List
+        for(int i = 0; i < testListGUI.GetTaskNumber(); i++){
+            taskList.getItems().add(testListGUI.GetTaskByIndex(i).GetTask()[0].toString());
+        }
 
-
+        //Create Button Event Handlers
+        EventHandler<ActionEvent> addTask = new EventHandler<ActionEvent>(){
+            public void handle(ActionEvent e){
+                root.getChildren().clear();
+            }
+        };
+        addTaskButton.setOnAction(addTask);
 
         stage.setScene(scene);
         stage.show();
