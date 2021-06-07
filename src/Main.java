@@ -169,7 +169,59 @@ public class Main extends Application{
         //Create Button Event Handlers
         EventHandler<ActionEvent> addTask = new EventHandler<ActionEvent>(){
             public void handle(ActionEvent e){
-                root.getChildren().clear();
+                Stage newTaskStage = new Stage();
+                newTaskStage.initModality(Modality.APPLICATION_MODAL);
+                VBox box = new VBox();
+                HBox buttons = new HBox();
+
+                TextField taskNameField, taskDescriptionField, taskDateYearField, taskDateMonthField,
+                        taskDateDayField, taskCompletionField;
+
+                Label taskNameLabel, taskDescriptionLabel, taskDateYearLabel, taskDateMonthLabel,
+                        taskDateDayLabel, taskCompletionLabel;
+
+                taskNameLabel = new Label("Task Name");
+                taskNameField = new TextField();
+
+                taskDescriptionLabel = new Label("Task Description");
+                taskDescriptionField = new TextField();
+
+                taskDateYearLabel = new Label("Task Year");
+                taskDateYearField = new TextField();
+
+                taskDateMonthLabel = new Label("Task Month");
+                taskDateMonthField = new TextField();
+
+                taskDateDayLabel = new Label("Task Day");
+                taskDateDayField = new TextField();
+
+                taskCompletionLabel = new Label("Current Task Completion");
+                taskCompletionField = new TextField();
+
+
+
+                Button addTaskConfirm = new Button("Add");
+                Button cancelTaskAdd = new Button("Cancel");
+                buttons.getChildren().addAll(addTaskConfirm, cancelTaskAdd);
+
+                box.getChildren().addAll(taskNameLabel,taskNameField,taskDescriptionLabel,taskDescriptionField,taskDateYearLabel,taskDateYearField,taskDateMonthLabel,taskDateMonthField,taskDateDayLabel,taskDateDayField,taskCompletionLabel,taskCompletionField,buttons);
+
+                newTaskStage.setScene(new Scene(box,350,350));
+                newTaskStage.show();
+
+                EventHandler<ActionEvent> addTaskInternalButton = new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        testListGUI.AddTask(new Task(taskNameField.getText().toString(),
+                                taskDescriptionField.getText().toString(),
+                                Integer.parseInt(taskDateYearField.getText()),
+                                Integer.parseInt(taskDateMonthField.getText()),
+                                Integer.parseInt(taskDateDayField.getText()),
+                                Integer.parseInt(taskCompletionField.getText())));
+                    }
+                };
+
+
             }
         };
         addTaskButton.setOnAction(addTask);
