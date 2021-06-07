@@ -20,6 +20,7 @@ import java.util.Scanner;
 
 public class Main extends Application{
 
+    TaskList testListGUI = new TaskList();
     static int[] APP_SIZE = { 600 , 400};
 
     public static void main(String[] args){
@@ -89,7 +90,7 @@ public class Main extends Application{
     @Override
     public void start(Stage stage){
         //Loading the Data
-        TaskList testListGUI = new TaskList();
+
         try {
             FileInputStream fileIn = new FileInputStream("./test.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -218,8 +219,12 @@ public class Main extends Application{
                                 Integer.parseInt(taskDateMonthField.getText()),
                                 Integer.parseInt(taskDateDayField.getText()),
                                 Integer.parseInt(taskCompletionField.getText())));
+                        taskList.getItems().add(testListGUI.GetTaskByIndex(testListGUI.GetTaskNumber() - 1).GetTask()[0].toString());
+                        newTaskStage.close();
                     }
                 };
+
+                addTaskConfirm.setOnAction(addTaskInternalButton);
 
 
             }
