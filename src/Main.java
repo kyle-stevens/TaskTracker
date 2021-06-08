@@ -220,11 +220,38 @@ public class Main extends Application{
                                 Integer.parseInt(taskDateDayField.getText()),
                                 Integer.parseInt(taskCompletionField.getText())));
                         taskList.getItems().add(testListGUI.GetTaskByIndex(testListGUI.GetTaskNumber() - 1).GetTask()[0].toString());
+
+
+                        //Saving the Data
+                        try {
+                            FileOutputStream fileOut =
+                                    new FileOutputStream("./test.ser");
+                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                            out.writeObject(testListGUI);
+                            out.close();
+                            fileOut.close();
+                            System.out.printf("Serialized data is saved in /test.ser");
+
+                        } catch (IOException i) {
+                            i.printStackTrace();
+
+                        }
+
+
+                        newTaskStage.close();
+                    }
+                };
+
+
+                EventHandler<ActionEvent> cancelTaskInternalButton = new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
                         newTaskStage.close();
                     }
                 };
 
                 addTaskConfirm.setOnAction(addTaskInternalButton);
+                cancelTaskAdd.setOnAction(cancelTaskInternalButton);
 
 
             }
