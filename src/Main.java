@@ -1,5 +1,7 @@
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -10,6 +12,8 @@ import javafx.collections.*;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+
+import javax.swing.*;
 import java.io.*;
 import java.util.List;
 import java.util.Scanner;
@@ -149,7 +153,7 @@ public class Main extends Application{
 
             VBox rightPane = new VBox();
             rightPane.setTranslateX(5);
-                TextField taskDescription = new TextField();
+                TextArea taskDescription = new TextArea();
                 taskDescription.setPrefSize(2 * APP_SIZE[0] /3, 5 * APP_SIZE[1] / 6);
                 taskDescription.setEditable(false);
                 HBox taskButtons = new HBox();
@@ -254,13 +258,78 @@ public class Main extends Application{
                 cancelTaskAdd.setOnAction(cancelTaskInternalButton);
 
 
+
+
+
+
+            }
+        };
+
+        EventHandler<ActionEvent> deleteTask = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String taskName = taskList.getSelectionModel().getSelectedItem();
+                for(int i = 0; i < testListGUI.GetTaskNumber(); i++){
+                    Task temp = testListGUI.GetTaskByIndex(i);
+                    if(temp.GetTask()[0] == taskName){
+                        testListGUI.RemoveTask(temp);
+                        taskList.getItems().remove(taskName);
+                    }
+                    //System.out.println("TEST2");
+
+                }
+                if(testListGUI.GetTaskNumber() == 0){
+                    taskDescription.setText("");
+                }
             }
         };
         addTaskButton.setOnAction(addTask);
+        deleteTaskButton.setOnAction(deleteTask);
+        taskList.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+            if(newValue == oldValue){
+                //do nothing
+            }
+            else{
+                for(int i = 0; i < testListGUI.GetTaskNumber(); i++){
+                    Object[] temp = testListGUI.GetTaskByIndex(i).GetTask();
+                    if(temp[0] == newValue){
+                        taskDescription.setText("Task Name: " + temp[0] + "\n" +
+                                "Task Date: " + temp[2].toString() + "\n" +
+                                "Task Completion: " + temp[3] + " \n" +
+                                "Task Description: " + temp[1] + "\n");
+                        //System.out.println("TEST");
+                    }
+                    //System.out.println("TEST2");
 
+                }
+            }
+        });
+
+
+
+        stage.setTitle("TaskTracker");
         stage.setScene(scene);
         stage.show();
     }
+
+    @Override
+    public void stop(){
+        System.out.println("Stage is closing");
+        try {
+            FileOutputStream fileOut =
+                    new FileOutputStream("./test.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(testListGUI);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in /test.ser");
+
+        } catch (IOException i) {
+            i.printStackTrace();
+
+        }
+    }
+
 
     public static void Option(char choice, TaskList list, Scanner scan){
 

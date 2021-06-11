@@ -16,6 +16,7 @@ public class Task implements java.io.Serializable{
 
     }
 
+
     public Object[] GetTask(){
         Object[] objects = {this.taskName,this.taskDescription,this.taskDate,this.taskCompletion};
         return objects;
