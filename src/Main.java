@@ -24,17 +24,22 @@ import java.util.Scanner;
 
 public class Main extends Application{
 
-    TaskList testListGUI = new TaskList();
+    TaskList taskListFromCollections = new TaskList();
+    CollectionsList[] collectionsList;
     static int[] APP_SIZE = { 600 , 400};
 
     public static void main(String[] args){
+        CollectionsList[] makeSaveFile = {new CollectionsList("default")};
 
-        TaskList testList = new TaskList();
+        makeSaveFile[0].AddTask(new Task("default", "default task to provide interface", 0, 0,0 ,0));
+
+
+
         char choice = 'q';
         Scanner scan = new Scanner(System.in);
         //LoadData(testList);
         //Loading the Data
-
+        /*
         try {
             FileInputStream fileIn = new FileInputStream("./test.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -65,13 +70,13 @@ public class Main extends Application{
         }while(choice != 'q');
         scan.close();
         //SaveData(testList);
-
+        */
         //Saving the Data
         try {
             FileOutputStream fileOut =
                     new FileOutputStream("./test.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(testList);
+            out.writeObject(makeSaveFile);
             out.close();
             fileOut.close();
             System.out.printf("Serialized data is saved in /test.ser");
@@ -98,7 +103,7 @@ public class Main extends Application{
         try {
             FileInputStream fileIn = new FileInputStream("./test.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            testListGUI = (TaskList) in.readObject();
+            collectionsList = (CollectionsList[]) in.readObject();
             in.close();
             fileIn.close();
 
@@ -110,6 +115,7 @@ public class Main extends Application{
             c.printStackTrace();
 
         }
+        System.out.println("\n" + collectionsList[0].collectionName);
 
         /*
         Hbox
@@ -136,7 +142,7 @@ public class Main extends Application{
             VBox leftPane = new VBox();
             leftPane.setPrefWidth(APP_SIZE[0] /3);
             leftPane.setTranslateX(2);
-                ComboBox collectionList = new ComboBox();
+                ComboBox<CollectionsList> collectionList = new ComboBox<CollectionsList>();
                 collectionList.setPrefWidth(APP_SIZE[0] / 3);
                 HBox collectionButtons = new HBox();
                     Button addCollection = new Button("ADD LIST");
@@ -149,6 +155,48 @@ public class Main extends Application{
             leftPane.getChildren().addAll(collectionList, collectionButtons, taskList);
 
 
+
+
+
+            collectionList.setItems(FXCollections.observableArrayList(
+                    collectionsList
+            ));
+            collectionList.getSelectionModel().selectFirst();
+            taskListFromCollections = collectionsList[0].GetTaskList();
+
+
+
+            collectionList.setConverter(new StringConverter<CollectionsList>() {
+                @Override
+                public String toString(CollectionsList object) {
+                    return object.collectionName;
+                }
+
+                @Override
+                public CollectionsList fromString(String string) {
+                    return null;
+                }
+            });
+
+            collectionList.getSelectionModel().selectedItemProperty().addListener((new ChangeListener() {
+                @Override
+                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                    CollectionsList nV = (CollectionsList)newValue;
+                    System.out.println(newValue.getClass().toString() + nV.collectionName);
+
+                    for(int i = 0; i < collectionsList.length; i++){
+                        if(nV.collectionName == collectionsList[i].collectionName){
+                            taskListFromCollections = collectionsList[i].GetTaskList();
+                        }
+                    }
+
+                    //Load Tasks into List
+                    taskList.getItems().clear();
+                    for(int i = 0; i < taskListFromCollections.GetTaskNumber(); i++){
+                        taskList.getItems().add(taskListFromCollections.GetTaskByIndex(i).GetTask()[0].toString());
+                    }
+                }
+            }));
 
 
             VBox rightPane = new VBox();
@@ -167,8 +215,8 @@ public class Main extends Application{
         root.getChildren().addAll(application);
 
         //Load Tasks into List
-        for(int i = 0; i < testListGUI.GetTaskNumber(); i++){
-            taskList.getItems().add(testListGUI.GetTaskByIndex(i).GetTask()[0].toString());
+        for(int i = 0; i < taskListFromCollections.GetTaskNumber(); i++){
+            taskList.getItems().add(taskListFromCollections.GetTaskByIndex(i).GetTask()[0].toString());
         }
 
         //Create Button Event Handlers
@@ -217,13 +265,13 @@ public class Main extends Application{
                 EventHandler<ActionEvent> addTaskInternalButton = new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        testListGUI.AddTask(new Task(taskNameField.getText().toString(),
+                        taskListFromCollections.AddTask(new Task(taskNameField.getText().toString(),
                                 taskDescriptionField.getText().toString(),
                                 Integer.parseInt(taskDateYearField.getText()),
                                 Integer.parseInt(taskDateMonthField.getText()),
                                 Integer.parseInt(taskDateDayField.getText()),
                                 Integer.parseInt(taskCompletionField.getText())));
-                        taskList.getItems().add(testListGUI.GetTaskByIndex(testListGUI.GetTaskNumber() - 1).GetTask()[0].toString());
+                        taskList.getItems().add(taskListFromCollections.GetTaskByIndex(taskListFromCollections.GetTaskNumber() - 1).GetTask()[0].toString());
 
 
                         //Saving the Data
@@ -231,7 +279,7 @@ public class Main extends Application{
                             FileOutputStream fileOut =
                                     new FileOutputStream("./test.ser");
                             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                            out.writeObject(testListGUI);
+                            out.writeObject(taskListFromCollections);
                             out.close();
                             fileOut.close();
                             System.out.printf("Serialized data is saved in /test.ser");
@@ -265,33 +313,48 @@ public class Main extends Application{
             }
         };
 
+        EventHandler<ActionEvent> addCollectionOperation = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.print("ADDCOLLECTION");
+            }
+        };
+        EventHandler<ActionEvent> deleteCollectionOperation = new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.print("DELETECOLLECTION");
+            }
+        };
+
         EventHandler<ActionEvent> deleteTask = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 String taskName = taskList.getSelectionModel().getSelectedItem();
-                for(int i = 0; i < testListGUI.GetTaskNumber(); i++){
-                    Task temp = testListGUI.GetTaskByIndex(i);
+                for(int i = 0; i < taskListFromCollections.GetTaskNumber(); i++){
+                    Task temp = taskListFromCollections.GetTaskByIndex(i);
                     if(temp.GetTask()[0] == taskName){
-                        testListGUI.RemoveTask(temp);
+                        taskListFromCollections.RemoveTask(temp);
                         taskList.getItems().remove(taskName);
                     }
                     //System.out.println("TEST2");
 
                 }
-                if(testListGUI.GetTaskNumber() == 0){
+                if(taskListFromCollections.GetTaskNumber() == 0){
                     taskDescription.setText("");
                 }
             }
         };
         addTaskButton.setOnAction(addTask);
         deleteTaskButton.setOnAction(deleteTask);
+        addCollection.setOnAction(addCollectionOperation);
+        deleteCollection.setOnAction(deleteCollectionOperation);
         taskList.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
             if(newValue == oldValue){
                 //do nothing
             }
             else{
-                for(int i = 0; i < testListGUI.GetTaskNumber(); i++){
-                    Object[] temp = testListGUI.GetTaskByIndex(i).GetTask();
+                for(int i = 0; i < taskListFromCollections.GetTaskNumber(); i++){
+                    Object[] temp = taskListFromCollections.GetTaskByIndex(i).GetTask();
                     if(temp[0] == newValue){
                         taskDescription.setText("Task Name: " + temp[0] + "\n" +
                                 "Task Date: " + temp[2].toString() + "\n" +
@@ -319,7 +382,7 @@ public class Main extends Application{
             FileOutputStream fileOut =
                     new FileOutputStream("./test.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(testListGUI);
+            out.writeObject(collectionsList);
             out.close();
             fileOut.close();
             System.out.printf("Serialized data is saved in /test.ser");
