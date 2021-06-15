@@ -15,6 +15,8 @@ import javafx.event.EventHandler;
 
 import javax.swing.*;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,13 +27,16 @@ import java.util.Scanner;
 public class Main extends Application{
 
     TaskList taskListFromCollections = new TaskList();
-    CollectionsList[] collectionsList;
+    ArrayList<CollectionsList> collectionsList;
+    CollectionsList selected;
     static int[] APP_SIZE = { 600 , 400};
 
     public static void main(String[] args){
-        CollectionsList[] makeSaveFile = {new CollectionsList("default")};
+        ArrayList<CollectionsList> makeSaveFile = new ArrayList<CollectionsList>();
+        makeSaveFile.add(new CollectionsList("default"));
+        makeSaveFile.add(new CollectionsList("default 2"));
 
-        makeSaveFile[0].AddTask(new Task("default", "default task to provide interface", 0, 0,0 ,0));
+        makeSaveFile.get(0).AddTask(new Task("default", "default task to provide interface", 0, 0,0 ,0));
 
 
 
@@ -72,6 +77,7 @@ public class Main extends Application{
         //SaveData(testList);
         */
         //Saving the Data
+        /*
         try {
             FileOutputStream fileOut =
                     new FileOutputStream("./test.ser");
@@ -86,7 +92,7 @@ public class Main extends Application{
 
         }
         //RunGUI(testList);
-
+    */
         Application.launch(args);
         return;
     }
@@ -103,7 +109,9 @@ public class Main extends Application{
         try {
             FileInputStream fileIn = new FileInputStream("./test.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            collectionsList = (CollectionsList[]) in.readObject();
+            //Object[] newObject =  (Object[]) in.readObject();
+            //System.out.println(newObject);
+            collectionsList = (ArrayList<CollectionsList>)in.readObject();
             in.close();
             fileIn.close();
 
@@ -115,9 +123,8 @@ public class Main extends Application{
             c.printStackTrace();
 
         }
-        System.out.println("\n" + collectionsList[0].collectionName);
 
-        /*
+/*
         Hbox
             Vbox
                 Dropdown List (1/3, std)
@@ -162,8 +169,8 @@ public class Main extends Application{
                     collectionsList
             ));
             collectionList.getSelectionModel().selectFirst();
-            taskListFromCollections = collectionsList[0].GetTaskList();
-
+            taskListFromCollections = collectionsList.get(0).GetTaskList();
+            selected = collectionsList.get(0);
 
 
             collectionList.setConverter(new StringConverter<CollectionsList>() {
@@ -183,10 +190,10 @@ public class Main extends Application{
                 public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                     CollectionsList nV = (CollectionsList)newValue;
                     System.out.println(newValue.getClass().toString() + nV.collectionName);
-
-                    for(int i = 0; i < collectionsList.length; i++){
-                        if(nV.collectionName == collectionsList[i].collectionName){
-                            taskListFromCollections = collectionsList[i].GetTaskList();
+                    selected = (CollectionsList)newValue;
+                    for(int i = 0; i < collectionsList.size(); i++){
+                        if(nV.collectionName == collectionsList.get(i).collectionName){
+                            taskListFromCollections = collectionsList.get(i).GetTaskList();
                         }
                     }
 
@@ -274,6 +281,7 @@ public class Main extends Application{
                         taskList.getItems().add(taskListFromCollections.GetTaskByIndex(taskListFromCollections.GetTaskNumber() - 1).GetTask()[0].toString());
 
 
+
                         //Saving the Data
                         try {
                             FileOutputStream fileOut =
@@ -317,12 +325,140 @@ public class Main extends Application{
             @Override
             public void handle(ActionEvent event) {
                 System.out.print("ADDCOLLECTION");
+                Stage newTaskStage = new Stage();
+                newTaskStage.initModality(Modality.APPLICATION_MODAL);
+                VBox box = new VBox();
+                HBox buttons = new HBox();
+
+                TextField collectionNameField;
+
+                Label collectionNameLabel;
+
+                collectionNameLabel = new Label("Collection Name");
+                collectionNameField = new TextField();
+
+
+
+                Button addTaskConfirm = new Button("Add");
+                Button cancelTaskAdd = new Button("Cancel");
+                buttons.getChildren().addAll(addTaskConfirm, cancelTaskAdd);
+
+                box.getChildren().addAll(collectionNameLabel, collectionNameField, buttons);
+
+                newTaskStage.setScene(new Scene(box,350,350));
+                newTaskStage.show();
+
+                EventHandler<ActionEvent> addCollectionInternalButton = new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        collectionsList.add(new CollectionsList(collectionNameField.getText().toString()));
+                        //taskList.getItems().add(taskListFromCollections.GetTaskByIndex(taskListFromCollections.GetTaskNumber() - 1).GetTask()[0].toString());
+                        collectionList.getItems().add(collectionsList.get(collectionsList.size() - 1));
+
+
+
+                        //Saving the Data
+                        try {
+                            FileOutputStream fileOut =
+                                    new FileOutputStream("./test.ser");
+                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                            out.writeObject(collectionsList);
+                            out.close();
+                            fileOut.close();
+                            System.out.printf("Serialized data is saved in /test.ser");
+
+                        } catch (IOException i) {
+                            i.printStackTrace();
+
+                        }
+
+
+                        newTaskStage.close();
+                    }
+                };
+
+
+                EventHandler<ActionEvent> cancelCollectionInternalButton = new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        newTaskStage.close();
+                    }
+                };
+
+                addTaskConfirm.setOnAction(addCollectionInternalButton);
+                cancelTaskAdd.setOnAction(cancelCollectionInternalButton);
+
+
+
+
+
             }
         };
         EventHandler<ActionEvent> deleteCollectionOperation = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 System.out.print("DELETECOLLECTION");
+                Stage newTaskStage = new Stage();
+                newTaskStage.initModality(Modality.APPLICATION_MODAL);
+                VBox box = new VBox();
+                HBox buttons = new HBox();
+
+                TextField collectionNameField;
+
+                Label collectionNameLabel;
+
+                collectionNameLabel = new Label("Are you sure?");
+
+
+
+
+                Button addTaskConfirm = new Button("Yes");
+                //Button cancelTaskAdd = new Button("No");
+                buttons.getChildren().addAll(addTaskConfirm/*, cancelTaskAdd*/);
+
+                box.getChildren().addAll(collectionNameLabel, buttons);
+
+                newTaskStage.setScene(new Scene(box,350,350));
+                newTaskStage.show();
+
+                EventHandler<ActionEvent> addCollectionInternalButton = new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        collectionsList.remove(collectionList.getSelectionModel().getSelectedItem());
+                        collectionList.getItems().remove(collectionList.getSelectionModel().getSelectedItem());
+
+
+
+                        //Saving the Data
+                        try {
+                            FileOutputStream fileOut =
+                                    new FileOutputStream("./test.ser");
+                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                            out.writeObject(collectionsList);
+                            out.close();
+                            fileOut.close();
+                            System.out.printf("Serialized data is saved in /test.ser");
+
+                        } catch (IOException i) {
+                            i.printStackTrace();
+
+                        }
+
+
+                        newTaskStage.close();
+                    }
+                };
+
+
+                EventHandler<ActionEvent> cancelCollectionInternalButton = new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        newTaskStage.close();
+                    }
+                };
+
+                addTaskConfirm.setOnAction(addCollectionInternalButton);
+                //cancelTaskAdd.setOnAction(cancelCollectionInternalButton);
             }
         };
 
