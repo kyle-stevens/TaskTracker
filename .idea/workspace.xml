@@ -25,18 +25,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80a6456e-5c9c-4b12-9dba-213a40598613" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/CompressedMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI_OUTLINE.kra" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI_OUTLINE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/TaskTracker_jar/TaskTracker.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TaskTracker_jar/TaskTracker.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$3$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$3$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$3$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$4$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$4$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$4$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$5$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$5$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$5$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/NewTaskPopup.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.ser" beforeDir="false" afterPath="$PROJECT_DIR$/test.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NewTaskPopup.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +89,14 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.CompressedMain">
+    <configuration name="CompressedMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CompressedMain" />
+      <module name="TaskTracker" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="TaskTracker" />
@@ -103,9 +119,11 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.NewTaskPopup" />
       <item itemvalue="JAR Application.TaskTracker.jar" />
+      <item itemvalue="Application.CompressedMain" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CompressedMain" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JAR Application.TaskTracker.jar" />
         <item itemvalue="Application.NewTaskPopup" />
@@ -136,6 +154,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="726" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1623781404431">
@@ -146,22 +165,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1623781392861" />
-    <state width="1877" height="362" key="GridCell.Tab.0.bottom" timestamp="1623783589306">
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1623826280964">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="362" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1623783589306" />
-    <state width="1877" height="362" key="GridCell.Tab.0.center" timestamp="1623783589306">
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1623826280964" />
+    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1623826280964">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="362" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1623783589306" />
-    <state width="1877" height="362" key="GridCell.Tab.0.left" timestamp="1623783589306">
+    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1623826280964" />
+    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1623826280964">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="362" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1623783589306" />
-    <state width="1877" height="362" key="GridCell.Tab.0.right" timestamp="1623783589306">
+    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1623826280964" />
+    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1623826280964">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="362" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1623783589306" />
+    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1623826280964" />
     <state width="1877" height="362" key="GridCell.Tab.1.bottom" timestamp="1623783589306">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
