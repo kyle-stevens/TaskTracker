@@ -224,8 +224,14 @@ public class Main extends Application{
                 buttons.getChildren().addAll(addTaskConfirm, cancelTaskAdd);
                 box.getChildren().addAll(collectionNameLabel, collectionNameField, buttons);
 <<<<<<< HEAD
+<<<<<<< HEAD
                 newTaskStage.setScene(new Scene(box,200,100));
 =======
+=======
+
+                newTaskStage.setScene(new Scene(box,350,350));
+                newTaskStage.show();
+>>>>>>> parent of be421aa (Resizing Sub Menus)
 
                 newTaskStage.setScene(new Scene(box,350,350));
 >>>>>>> parent of be421aa (Resizing Sub Menus)
@@ -237,8 +243,11 @@ public class Main extends Application{
                         //taskList.getItems().add(taskListFromCollections.GetTaskByIndex(taskListFromCollections.GetTaskNumber() - 1).GetTask()[0].toString());
                         collectionList.getItems().add(collectionsList.get(collectionsList.size() - 1));
 <<<<<<< HEAD
+<<<<<<< HEAD
                         collectionList.getSelectionModel().select(collectionsList.get(collectionsList.size() - 1));
 =======
+=======
+>>>>>>> parent of be421aa (Resizing Sub Menus)
 
 
 
