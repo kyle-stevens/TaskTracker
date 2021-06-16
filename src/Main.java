@@ -223,7 +223,12 @@ public class Main extends Application{
                 Button cancelTaskAdd = new Button("Cancel");
                 buttons.getChildren().addAll(addTaskConfirm, cancelTaskAdd);
                 box.getChildren().addAll(collectionNameLabel, collectionNameField, buttons);
+<<<<<<< HEAD
                 newTaskStage.setScene(new Scene(box,200,100));
+=======
+
+                newTaskStage.setScene(new Scene(box,350,350));
+>>>>>>> parent of be421aa (Resizing Sub Menus)
                 newTaskStage.show();
                 EventHandler<ActionEvent> addCollectionInternalButton = new EventHandler<ActionEvent>() {
                     @Override
@@ -231,7 +236,13 @@ public class Main extends Application{
                         collectionsList.add(new CollectionsList(collectionNameField.getText().toString()));
                         //taskList.getItems().add(taskListFromCollections.GetTaskByIndex(taskListFromCollections.GetTaskNumber() - 1).GetTask()[0].toString());
                         collectionList.getItems().add(collectionsList.get(collectionsList.size() - 1));
+<<<<<<< HEAD
                         collectionList.getSelectionModel().select(collectionsList.get(collectionsList.size() - 1));
+=======
+
+
+
+>>>>>>> parent of be421aa (Resizing Sub Menus)
                         //Saving the Data
                         try {
                             FileOutputStream fileOut =
@@ -289,7 +300,7 @@ public class Main extends Application{
 
                 box.getChildren().addAll(collectionNameLabel, buttons);
 
-                newTaskStage.setScene(new Scene(box,200,50));
+                newTaskStage.setScene(new Scene(box,350,350));
                 newTaskStage.show();
 
                 EventHandler<ActionEvent> addCollectionInternalButton = new EventHandler<ActionEvent>() {
