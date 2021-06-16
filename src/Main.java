@@ -345,7 +345,7 @@ public class Main extends Application{
 
                 box.getChildren().addAll(collectionNameLabel, collectionNameField, buttons);
 
-                newTaskStage.setScene(new Scene(box,350,350));
+                newTaskStage.setScene(new Scene(box,200,100));
                 newTaskStage.show();
 
                 EventHandler<ActionEvent> addCollectionInternalButton = new EventHandler<ActionEvent>() {
@@ -354,6 +354,7 @@ public class Main extends Application{
                         collectionsList.add(new CollectionsList(collectionNameField.getText().toString()));
                         //taskList.getItems().add(taskListFromCollections.GetTaskByIndex(taskListFromCollections.GetTaskNumber() - 1).GetTask()[0].toString());
                         collectionList.getItems().add(collectionsList.get(collectionsList.size() - 1));
+                        collectionList.getSelectionModel().select(collectionsList.get(collectionsList.size() - 1));
 
 
 
@@ -418,7 +419,7 @@ public class Main extends Application{
 
                 box.getChildren().addAll(collectionNameLabel, buttons);
 
-                newTaskStage.setScene(new Scene(box,350,350));
+                newTaskStage.setScene(new Scene(box,200,50));
                 newTaskStage.show();
 
                 EventHandler<ActionEvent> addCollectionInternalButton = new EventHandler<ActionEvent>() {
@@ -484,6 +485,7 @@ public class Main extends Application{
         deleteTaskButton.setOnAction(deleteTask);
         addCollection.setOnAction(addCollectionOperation);
         deleteCollection.setOnAction(deleteCollectionOperation);
+
         taskList.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
             if(newValue == oldValue){
                 //do nothing
