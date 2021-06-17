@@ -23,7 +23,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         /*
-        Code to Regen Default File
+        //Code to Regen Default File
         ArrayList<CollectionsList> defaultCollections = new ArrayList<CollectionsList>();
 
         defaultCollections.add(new CollectionsList("Default"));
