@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="TaskTracker:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="80a6456e-5c9c-4b12-9dba-213a40598613" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/CompressedMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI_OUTLINE.kra" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI_OUTLINE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/TaskTracker_jar/TaskTracker.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TaskTracker_jar/TaskTracker.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$3$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$3$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$3$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$4$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$4$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$4$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$5$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$5$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$5$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TaskTracker/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TaskTracker/NewTaskPopup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NewTaskPopup.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/TaskTracker$Main.ic" NAME="Main Coverage Results" MODIFIED="1623523333169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>stage</find>
+      <find>args</find>
+      <find>testListGUI</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>taskList</replace>
+      <replace>taskListFromCollections</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1tzn5XNLgxZC7bzGS8abOA7fTyO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1623523508476" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager" selected="Application.CompressedMain">
+    <configuration name="CompressedMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CompressedMain" />
+      <module name="TaskTracker" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="TaskTracker" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NewTaskPopup" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NewTaskPopup" />
+      <module name="TaskTracker" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskTracker.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/TaskTracker_jar/TaskTracker.jar" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.NewTaskPopup" />
+      <item itemvalue="JAR Application.TaskTracker.jar" />
+      <item itemvalue="Application.CompressedMain" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CompressedMain" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JAR Application.TaskTracker.jar" />
+        <item itemvalue="Application.NewTaskPopup" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="80a6456e-5c9c-4b12-9dba-213a40598613" name="Default Changelist" comment="" />
+      <created>1622003847430</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1622003847430</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="726" y="342" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1623781404431">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="726" y="342" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1623781404431" />
+    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1623781392861">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="690" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1623781392861" />
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1623826280964">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1623826280964" />
+    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1623826280964">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1623826280964" />
+    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1623826280964">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1623826280964" />
+    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1623826280964">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1623826280964" />
+    <state width="1877" height="362" key="GridCell.Tab.1.bottom" timestamp="1623783589306">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="362" key="GridCell.Tab.1.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1623783589306" />
+    <state width="1877" height="362" key="GridCell.Tab.1.center" timestamp="1623783589306">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="362" key="GridCell.Tab.1.center/0.0.1920.1080@0.0.1920.1080" timestamp="1623783589306" />
+    <state width="1877" height="362" key="GridCell.Tab.1.left" timestamp="1623783589306">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="362" key="GridCell.Tab.1.left/0.0.1920.1080@0.0.1920.1080" timestamp="1623783589306" />
+    <state width="1877" height="362" key="GridCell.Tab.1.right" timestamp="1623783589306">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1877" height="362" key="GridCell.Tab.1.right/0.0.1920.1080@0.0.1920.1080" timestamp="1623783589306" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>TaskTracker:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>TaskTracker</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
