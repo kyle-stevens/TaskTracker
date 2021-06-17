@@ -22,6 +22,26 @@ public class Main extends Application {
     static int[] APP_SIZE = {600, 400};
 
     public static void main(String[] args) {
+        /*
+        Code to Regen Default File
+        ArrayList<CollectionsList> defaultCollections = new ArrayList<CollectionsList>();
+
+        defaultCollections.add(new CollectionsList("Default"));
+        defaultCollections.get(0).AddTask(new Task("DEFAULT" ,"DEFAULT FOR TESTING", 0,0,0,0));
+
+        try {
+            FileOutputStream fileOut =
+                    new FileOutputStream("./test.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(defaultCollections);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in /test.ser");
+
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+        */
         Application.launch(args);
         return;
     }
@@ -44,6 +64,7 @@ public class Main extends Application {
             c.printStackTrace();
 
         }
+        System.out.println(collectionsList.size());
 
         /*
         Hbox
@@ -80,10 +101,14 @@ public class Main extends Application {
         ListView<String> taskList = new ListView<String>();
         taskList.setPrefHeight(APP_SIZE[1] - collectionList.getHeight() - addCollection.getHeight() - 51);
         leftPane.getChildren().addAll(collectionList, collectionButtons, taskList);
-
-        collectionList.setItems(FXCollections.observableArrayList(
-                collectionsList
-        ));
+        if(collectionsList == null){
+            System.out.println("Error");
+        }
+        else{
+            collectionList.setItems(FXCollections.observableArrayList(
+                    collectionsList
+            ));
+        }
         collectionList.getSelectionModel().selectFirst();
         taskListFromCollections = collectionsList.get(0).GetTaskList();
         selected = collectionsList.get(0);
@@ -91,7 +116,7 @@ public class Main extends Application {
         collectionList.setConverter(new StringConverter<CollectionsList>() {
             @Override
             public String toString(CollectionsList object) {
-                return object.collectionName;
+                return object.collectionName + " - " + object.GetTaskNumber() + " tasks";
             }
 
             @Override
@@ -307,7 +332,9 @@ public class Main extends Application {
                         } catch (IOException i) {
                             i.printStackTrace();
                         }
+
                         newTaskStage.close();
+                        taskDescription.clear();
                     }
                 };
 

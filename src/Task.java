@@ -22,6 +22,10 @@ public class Task implements java.io.Serializable{
         return objects;
     }
 
+    public String GetDateString(){
+        return(String.valueOf(this.taskDate.getDay()) + " " + String.valueOf(this.taskDate.getMonth()) + " " + String.valueOf(this.taskDate.getYear()));
+    }
+
     //Need a load task function that will load from disk
     //Need a save task function that will save to disk
 
