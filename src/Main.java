@@ -22,13 +22,12 @@ public class Main extends Application {
     static int[] APP_SIZE = {600, 400};
 
     public static void main(String[] args) {
-        /*
-        //Code to Regen Default File
+
         ArrayList<CollectionsList> defaultCollections = new ArrayList<CollectionsList>();
 
         defaultCollections.add(new CollectionsList("Default"));
         defaultCollections.get(0).AddTask(new Task("DEFAULT" ,"DEFAULT FOR TESTING", 0,0,0,0));
-
+        /*
         try {
             FileOutputStream fileOut =
                     new FileOutputStream("./test.ser");
@@ -42,6 +41,22 @@ public class Main extends Application {
             i.printStackTrace();
         }
         */
+        try{
+            FileInputStream fileIn = new FileInputStream("./test.ser");
+        } catch (FileNotFoundException f){
+            try {
+                FileOutputStream fileOut =
+                        new FileOutputStream("./test.ser");
+                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                out.writeObject(defaultCollections);
+                out.close();
+                fileOut.close();
+                System.out.printf("Serialized data is saved in /test.ser");
+
+            } catch (IOException i) {
+                i.printStackTrace();
+            }
+        }
         Application.launch(args);
         return;
     }
