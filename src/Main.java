@@ -27,20 +27,6 @@ public class Main extends Application {
 
         defaultCollections.add(new CollectionsList("Default"));
         defaultCollections.get(0).AddTask(new Task("DEFAULT" ,"DEFAULT FOR TESTING", 0,0,0,0));
-        /*
-        try {
-            FileOutputStream fileOut =
-                    new FileOutputStream("./data.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(defaultCollections);
-            out.close();
-            fileOut.close();
-            System.out.printf("Serialized data is saved in /data.ser");
-
-        } catch (IOException i) {
-            i.printStackTrace();
-        }
-        */
         try{
             FileInputStream fileIn = new FileInputStream("./data.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -88,21 +74,6 @@ public class Main extends Application {
 
         }
         System.out.println(collectionsList.size());
-
-        /*
-        Hbox
-            Vbox
-                Dropdown List (1/3, std)
-                Hbox
-                    Add Collection button
-                    Delete Collection button
-                List
-            Vbox
-                Textfield/Label
-                Hbox
-                    Add task button
-                    Delete task button
-         */
         Pane root = new Pane();
         Scene scene = new Scene(root, APP_SIZE[0], APP_SIZE[1]);
         root.setMaxSize(APP_SIZE[0], APP_SIZE[1]);
