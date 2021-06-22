@@ -30,32 +30,40 @@ public class Main extends Application {
         /*
         try {
             FileOutputStream fileOut =
-                    new FileOutputStream("./test.ser");
+                    new FileOutputStream("./data.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(defaultCollections);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in /test.ser");
+            System.out.printf("Serialized data is saved in /data.ser");
 
         } catch (IOException i) {
             i.printStackTrace();
         }
         */
         try{
-            FileInputStream fileIn = new FileInputStream("./test.ser");
-        } catch (FileNotFoundException f){
+            FileInputStream fileIn = new FileInputStream("./data.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            defaultCollections = (ArrayList<CollectionsList>)in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException f){
             try {
                 FileOutputStream fileOut =
-                        new FileOutputStream("./test.ser");
+                        new FileOutputStream("./data.ser");
                 ObjectOutputStream out = new ObjectOutputStream(fileOut);
                 out.writeObject(defaultCollections);
                 out.close();
                 fileOut.close();
-                System.out.printf("Serialized data is saved in /test.ser");
+                System.out.printf("Serialized data is saved in /data.ser");
 
             } catch (IOException i) {
                 i.printStackTrace();
             }
+        } catch (ClassNotFoundException c) {
+            System.out.println("Employee class not found");
+            c.printStackTrace();
+
         }
         Application.launch(args);
         return;
@@ -65,7 +73,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         //Loading the Data
         try {
-            FileInputStream fileIn = new FileInputStream("./test.ser");
+            FileInputStream fileIn = new FileInputStream("./data.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             collectionsList = (ArrayList<CollectionsList>) in.readObject();
             in.close();
@@ -233,12 +241,12 @@ public class Main extends Application {
                         //Saving the Data
                         try {
                             FileOutputStream fileOut =
-                                    new FileOutputStream("./test.ser");
+                                    new FileOutputStream("./data.ser");
                             ObjectOutputStream out = new ObjectOutputStream(fileOut);
                             out.writeObject(taskListFromCollections);
                             out.close();
                             fileOut.close();
-                            System.out.printf("Serialized data is saved in /test.ser");
+                            System.out.printf("Serialized data is saved in /data.ser");
 
                         } catch (IOException i) {
                             i.printStackTrace();
@@ -288,12 +296,12 @@ public class Main extends Application {
                         //Saving the Data
                         try {
                             FileOutputStream fileOut =
-                                    new FileOutputStream("./test.ser");
+                                    new FileOutputStream("./data.ser");
                             ObjectOutputStream out = new ObjectOutputStream(fileOut);
                             out.writeObject(collectionsList);
                             out.close();
                             fileOut.close();
-                            System.out.printf("Serialized data is saved in /test.ser");
+                            System.out.printf("Serialized data is saved in /data.ser");
 
                         } catch (IOException i) {
                             i.printStackTrace();
@@ -337,12 +345,12 @@ public class Main extends Application {
                         //Saving the Data
                         try {
                             FileOutputStream fileOut =
-                                    new FileOutputStream("./test.ser");
+                                    new FileOutputStream("./data.ser");
                             ObjectOutputStream out = new ObjectOutputStream(fileOut);
                             out.writeObject(collectionsList);
                             out.close();
                             fileOut.close();
-                            System.out.printf("Serialized data is saved in /test.ser");
+                            System.out.printf("Serialized data is saved in /data.ser");
 
                         } catch (IOException i) {
                             i.printStackTrace();
@@ -410,12 +418,12 @@ public class Main extends Application {
         System.out.println("Stage is closing");
         try {
             FileOutputStream fileOut =
-                    new FileOutputStream("./test.ser");
+                    new FileOutputStream("./data.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(collectionsList);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in /test.ser");
+            System.out.printf("Serialized data is saved in /data.ser");
 
         } catch (IOException i) {
             i.printStackTrace();
