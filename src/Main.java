@@ -278,6 +278,11 @@ public class Main extends Application {
                             i.printStackTrace();
                         }
                         newTaskStage.close();
+
+
+
+                        //Disabling button code
+                        deleteCollection.setDisable(false);
                     }
                 };
 
@@ -290,6 +295,10 @@ public class Main extends Application {
 
                 addTaskConfirm.setOnAction(addCollectionInternalButton);
                 cancelTaskAdd.setOnAction(cancelCollectionInternalButton);
+
+
+
+
             }
         };
 
@@ -308,9 +317,12 @@ public class Main extends Application {
                 newTaskStage.setScene(new Scene(box, 200, 50));
                 newTaskStage.show();
 
-                EventHandler<ActionEvent> addCollectionInternalButton = new EventHandler<ActionEvent>() {
+                EventHandler<ActionEvent> deleteCollectionInternalButton = new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
+
+
+
                         collectionsList.remove(collectionList.getSelectionModel().getSelectedItem());
                         collectionList.getItems().remove(collectionList.getSelectionModel().getSelectedItem());
                         //Saving the Data
@@ -329,17 +341,16 @@ public class Main extends Application {
 
                         newTaskStage.close();
                         taskDescription.clear();
+
+                        //Disabling button code
+                        if(collectionsList.size() <= 1) {
+                            deleteCollection.setDisable(true);
+                        }
+
                     }
                 };
 
-                EventHandler<ActionEvent> cancelCollectionInternalButton = new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        newTaskStage.close();
-                    }
-                };
-
-                addTaskConfirm.setOnAction(addCollectionInternalButton);
+                addTaskConfirm.setOnAction(deleteCollectionInternalButton);
             }
         };
 
@@ -378,7 +389,13 @@ public class Main extends Application {
                 }
             }
         });
-
+        //Collections Check to prevent exceptions when deleting the last collection
+        if(collectionsList.size() <= 1){
+            deleteCollection.setDisable(true);
+        }
+        else{
+            deleteCollection.setDisable(false);
+        }
         stage.setTitle("TaskTracker");
         stage.setScene(scene);
         stage.show();
