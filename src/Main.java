@@ -19,7 +19,7 @@ public class Main extends Application {
     TaskList taskListFromCollections = new TaskList();
     ArrayList<CollectionsList> collectionsList;
     CollectionsList selected;
-    static int[] APP_SIZE = {600, 400};
+    double[] APP_SIZE = {600, 400};
 
     public static void main(String[] args) {
 
@@ -73,27 +73,37 @@ public class Main extends Application {
             c.printStackTrace();
 
         }
-        System.out.println(collectionsList.size());
+
         Pane root = new Pane();
+
         Scene scene = new Scene(root, APP_SIZE[0], APP_SIZE[1]);
         root.setMaxSize(APP_SIZE[0], APP_SIZE[1]);
         root.setMinSize(APP_SIZE[0], APP_SIZE[1]);
+
         stage.setResizable(false);
 
         HBox application = new HBox();
+
         VBox leftPane = new VBox();
         leftPane.setPrefWidth(APP_SIZE[0] / 3);
         leftPane.setTranslateX(2);
+
         ComboBox<CollectionsList> collectionList = new ComboBox<CollectionsList>();
         collectionList.setPrefWidth(APP_SIZE[0] / 3);
+
         HBox collectionButtons = new HBox();
+
         Button addCollection = new Button("ADD LIST");
         addCollection.setPrefWidth(APP_SIZE[0] / 6);
+
         Button deleteCollection = new Button("DELETE LIST");
         deleteCollection.setPrefWidth(APP_SIZE[0] / 6);
+
         collectionButtons.getChildren().addAll(addCollection, deleteCollection);
+
         ListView<String> taskList = new ListView<String>();
         taskList.setPrefHeight(APP_SIZE[1] - collectionList.getHeight() - addCollection.getHeight() - 51);
+
         leftPane.getChildren().addAll(collectionList, collectionButtons, taskList);
         if(collectionsList == null){
             System.out.println("Error");
@@ -140,14 +150,19 @@ public class Main extends Application {
 
         VBox rightPane = new VBox();
         rightPane.setTranslateX(5);
+
         TextArea taskDescription = new TextArea();
-        taskDescription.setPrefSize(2 * APP_SIZE[0] / 3, 5 * APP_SIZE[1] / 6);
+        taskDescription.setPrefSize(2 * APP_SIZE[0] / 3 - 10, 5 * APP_SIZE[1] / 6);
         taskDescription.setEditable(false);
+
         HBox taskButtons = new HBox();
+
         Button addTaskButton = new Button("ADD TASK");
-        addTaskButton.setPrefSize(APP_SIZE[0] / 3, APP_SIZE[1] / 6);
+        addTaskButton.setPrefSize(APP_SIZE[0] / 3 - 5, APP_SIZE[1] / 6 - 2);
+
         Button deleteTaskButton = new Button("DELETE TASK");
-        deleteTaskButton.setPrefSize(APP_SIZE[0] / 3, APP_SIZE[1] / 6);
+        deleteTaskButton.setPrefSize(APP_SIZE[0] / 3 - 5, APP_SIZE[1] / 6 - 2);
+
         taskButtons.getChildren().addAll(addTaskButton, deleteTaskButton);
         rightPane.getChildren().addAll(taskDescription, taskButtons);
         application.getChildren().addAll(leftPane, rightPane);
@@ -370,10 +385,12 @@ public class Main extends Application {
                 }
             }
         };
+
         addTaskButton.setOnAction(addTask);
         deleteTaskButton.setOnAction(deleteTask);
         addCollection.setOnAction(addCollectionOperation);
         deleteCollection.setOnAction(deleteCollectionOperation);
+
         taskList.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
             if (newValue == oldValue) {
                 //do nothing
@@ -389,6 +406,7 @@ public class Main extends Application {
                 }
             }
         });
+
         //Collections Check to prevent exceptions when deleting the last collection
         if(collectionsList.size() <= 1){
             deleteCollection.setDisable(true);
@@ -396,6 +414,94 @@ public class Main extends Application {
         else{
             deleteCollection.setDisable(false);
         }
+
+        /* Issues with Add and Delete Task Buttons
+        //Trying Resizing
+        stage.widthProperty().addListener((options, oldValue, newValue) -> {
+            APP_SIZE[0] = (double)newValue;
+
+
+            root.setMaxSize(APP_SIZE[0], APP_SIZE[1]);
+            root.setMinSize(APP_SIZE[0], APP_SIZE[1]);
+            stage.setResizable(true);
+
+
+            leftPane.setPrefWidth(APP_SIZE[0] / 3);
+            leftPane.setTranslateX(2);
+
+            collectionList.setPrefWidth(APP_SIZE[0] / 3);
+
+
+            addCollection.setPrefWidth(APP_SIZE[0] / 6);
+
+            deleteCollection.setPrefWidth(APP_SIZE[0] / 6);
+            //collectionButtons.getChildren().addAll(addCollection, deleteCollection);
+
+            taskList.setPrefHeight(APP_SIZE[1] - collectionList.getHeight() - addCollection.getHeight() - 51);
+            //leftPane.getChildren().addAll(collectionList, collectionButtons, taskList);
+
+
+
+
+            rightPane.setTranslateX(5);
+
+            taskDescription.setPrefSize(2 * APP_SIZE[0] / 3, 5 * APP_SIZE[1] / 6);
+            taskDescription.setEditable(false);
+
+
+            addTaskButton.setPrefSize(APP_SIZE[0] / 3, APP_SIZE[1] / 6);
+
+            deleteTaskButton.setPrefSize(APP_SIZE[0] / 3, APP_SIZE[1] / 6);
+            //taskButtons.getChildren().addAll(addTaskButton, deleteTaskButton);
+           // rightPane.getChildren().addAll(taskDescription, taskButtons);
+            //application.getChildren().addAll(leftPane, rightPane);
+           // root.getChildren().addAll(application);
+
+        });
+
+        stage.heightProperty().addListener((options, oldValue, newValue) -> {
+            APP_SIZE[1] = (double)newValue;
+
+
+            root.setMaxSize(APP_SIZE[0], APP_SIZE[1]);
+            root.setMinSize(APP_SIZE[0], APP_SIZE[1]);
+            stage.setResizable(true);
+
+
+            leftPane.setPrefWidth(APP_SIZE[0] / 3);
+            leftPane.setTranslateX(2);
+
+            collectionList.setPrefWidth(APP_SIZE[0] / 3);
+
+
+            addCollection.setPrefWidth(APP_SIZE[0] / 6);
+
+            deleteCollection.setPrefWidth(APP_SIZE[0] / 6);
+            //collectionButtons.getChildren().addAll(addCollection, deleteCollection);
+
+            taskList.setPrefHeight(APP_SIZE[1] - collectionList.getHeight() - addCollection.getHeight() - 51);
+            //leftPane.getChildren().addAll(collectionList, collectionButtons, taskList);
+
+
+
+
+            rightPane.setTranslateX(5);
+
+            taskDescription.setPrefSize(2 * APP_SIZE[0] / 3, 5 * APP_SIZE[1] / 6);
+            taskDescription.setEditable(false);
+
+
+            addTaskButton.setPrefSize(APP_SIZE[0] / 3, APP_SIZE[1] / 6);
+
+            deleteTaskButton.setPrefSize(APP_SIZE[0] / 3, APP_SIZE[1] / 6);
+            //taskButtons.getChildren().addAll(addTaskButton, deleteTaskButton);
+            // rightPane.getChildren().addAll(taskDescription, taskButtons);
+            //application.getChildren().addAll(leftPane, rightPane);
+            // root.getChildren().addAll(application);
+
+        });
+        */
+
         stage.setTitle("TaskTracker");
         stage.setScene(scene);
         stage.show();
